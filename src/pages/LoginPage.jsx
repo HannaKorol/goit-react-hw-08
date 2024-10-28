@@ -3,7 +3,7 @@ import React from 'react'
 
 const LoginPage = () => {
 
-    initialValues = {
+const initialValues = {
         email: '',
         password: '',
     }
