@@ -4,6 +4,7 @@ import {
   deleteContactsThunk,
   fetchContacts,
 } from "./contactsOps";
+import { logout } from "./auth/operations";
 
 const slice = createSlice({
   name: "contacts",
@@ -29,6 +30,7 @@ const slice = createSlice({
       .addCase(addContactsThunk.fulfilled, (state, action) => {
         state.items.push(action.payload);
       })
+      .addCase(logout.fulfilled, () => initialState)
 
       //AddMtcher- використовуються для однотипних завдань і не можуть бути серед addCase, тільки в кінці після них
       .addMatcher(
