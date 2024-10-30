@@ -17,7 +17,6 @@ import { selectIsRefreshing } from "../redux/auth/selector";
 import { PrivateRoute } from "./PrivateRoute";
 import { RestrictedRoute } from "./RestrictedRoute";
 
-
 export default function App() {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -36,7 +35,7 @@ export default function App() {
     dispatch,
   ]); /* функція була викликана користувачем - фетчимо данні і робимо диспатчь в contactsOps */
 
-const isRefreshing = useSelector(selectIsRefreshing)
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   return isRefreshing ? null : (
     <Routes>
@@ -46,14 +45,27 @@ const isRefreshing = useSelector(selectIsRefreshing)
         <Route
           path="contacts"
           element={
-            <PrivateRoute component={<ContactsPage />} redirectTo="/login" /> /* якщо ти хочещ бачити контакти, будь ласка залогуйся */
+            <PrivateRoute
+              component={<ContactsPage />}
+              redirectTo="/login"
+            /> /* якщо ти хочещ бачити контакти, будь ласка залогуйся */
           }
         />
         {/* Вкладені маршути не містять '/' */}
-        <Route path="register" element={<RegistrationPage />} />
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute
+              component={<RegistrationPage />}
+              redirectTo="/contacts"
+            />
+          }
+        />
         <Route
           path="login"
-          element={<RestrictedRoute component={<LoginPage />} redirectTo= '/contacts' />} //якщо ти вже залогований, ти не повинен бачити сторінку логінізації
+          element={
+            <RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />
+          } //якщо ти вже залогований, ти не повинен бачити сторінку логінізації
         />
       </Route>
       <Route path="*" element={<NotFound />} />
