@@ -2,8 +2,7 @@ import ContactForm from "./ContactForm/ContactForm";
 import SearchBox from "./SearchBox/SearchBox";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchContacts } from "../redux/contactsOps";
-import { selectError, selectLoading } from "../redux/contactsSlice";
+import { fetchContacts } from "../redux/contacts/operations";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import NotFound from "../pages/NotFound";
@@ -12,9 +11,10 @@ import ContactsPage from "../pages/ContactsPage";
 import RegistrationPage from "../pages/RegistrationPage";
 import LoginPage from "../pages/LoginPage";
 import { refresh } from "../redux/auth/operations";
-import { selectIsRefreshing } from "../redux/auth/selector";
+import { selectIsRefreshing } from "../redux/auth/selectors";
 import { PrivateRoute } from "./PrivateRoute";
 import { RestrictedRoute } from "./RestrictedRoute";
+import { selectError, selectLoading } from "../redux/contacts/selectors";
 
 export default function App() {
   const loading = useSelector(selectLoading);

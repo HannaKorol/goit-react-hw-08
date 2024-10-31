@@ -1,13 +1,13 @@
 /* import { useId } from "react"; // хук useId для створення унікальних ідентифікаторів полів. ("Елементи форми")
- */import { ErrorMessage, Field, Form, Formik } from "formik";
+ */ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import s from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContactsThunk } from "../../redux/contactsOps.js";
+import { addContactsThunk } from "../../redux/contacts/operations.js";
 
 export default function ContactForm() {
   const dispatch = useDispatch();
-/*   const nameFieldId = useId(); //!!!Не используйте Nano ID для генерации свойства key в JSX. При каждом рендере key будет разный, что плохо скажется на производительности.Для связи <input> и <label> лучше использовать useId, который был добавлен в React 18. (https://github.com/ai/nanoid/blob/main/README.ru.md)
+  /*   const nameFieldId = useId(); //!!!Не используйте Nano ID для генерации свойства key в JSX. При каждом рендере key будет разный, что плохо скажется на производительности.Для связи <input> и <label> лучше использовать useId, который был добавлен в React 18. (https://github.com/ai/nanoid/blob/main/README.ru.md)
   const numberFieldId = useId(); */
 
   const initialValues = {
@@ -17,7 +17,7 @@ export default function ContactForm() {
 
   const handleSubmit = (values, actions) => {
     //Функція відправки форми має два параметри: values - об'єкт значень полів форми в момент її відправки. actions - об'єкт з допоміжними методами. Наприклад, метод resetForm використовується для очищення полів форми після відправки.
-     const newContact = {
+    const newContact = {
       name: values.name,
       number: values.number,
     };

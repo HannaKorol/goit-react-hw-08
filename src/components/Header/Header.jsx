@@ -1,9 +1,8 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./Header.module.css";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsLoggedIn, selectUser } from "../../redux/auth/selector";
+import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 import { logout } from "../../redux/auth/operations";
 
 const Header = () => {
@@ -36,7 +35,14 @@ const Header = () => {
             </NavLink>
           </>
         )}
-        {isLoggedIn && <button onClick={() => dispatch(logout())} className="btn btn-secondary">Exit</button>}
+        {isLoggedIn && (
+          <button
+            onClick={() => dispatch(logout())}
+            className="btn btn-secondary"
+          >
+            Exit
+          </button>
+        )}
       </div>
     </div>
   );

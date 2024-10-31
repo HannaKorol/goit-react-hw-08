@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { contactsReducer } from "./contactsSlice.js";
-import { filtersReducer } from "./filtersSlice.js";
+import { contactsReducer } from "./contacts/slice.js";
+import { filtersReducer } from "./filters/slice.js";
 import { authSlice } from "./auth/slice.js";
 import {
   persistStore,
@@ -18,15 +18,14 @@ const persistConfig = {
   key: "root-auth",
   version: 1,
   storage,
-  whitelist: ['token'], //зберігаємо тільки токін щоб користувач логінячись в свій еканом міг отримати доступ
+  whitelist: ["token"], //зберігаємо тільки токін щоб користувач логінячись в свій еканом міг отримати доступ
 };
-
 
 export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
     filters: filtersReducer,
-    auth:  persistReducer(persistConfig, authSlice),
+    auth: persistReducer(persistConfig, authSlice),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -35,6 +34,5 @@ export const store = configureStore({
       },
     }),
 });
-
 
 export const persistor = persistStore(store);

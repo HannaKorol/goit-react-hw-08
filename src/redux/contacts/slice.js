@@ -1,10 +1,10 @@
-import { createSelector, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { /* createSelector, */ createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   addContactsThunk,
   deleteContactsThunk,
   fetchContacts,
-} from "./contactsOps";
-import { logout } from "./auth/operations";
+} from "./operations";
+import { logout } from "../auth/operations";
 
 const slice = createSlice({
   name: "contacts",
@@ -16,9 +16,9 @@ const slice = createSlice({
       name: "",
     },
   },
-  selectors: {
+/*   selectors: {
     selectContacts: (state) => state.items,
-  },
+  }, */
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -30,7 +30,7 @@ const slice = createSlice({
       .addCase(addContactsThunk.fulfilled, (state, action) => {
         state.items.push(action.payload);
       })
-      .addCase(logout.fulfilled, () => initialState)
+      .addCase(logout.fulfilled, (state) => {state.items = [];} )
 
       //AddMtcher- використовуються для однотипних завдань і не можуть бути серед addCase, тільки в кінці після них
       .addMatcher(
@@ -69,7 +69,7 @@ const slice = createSlice({
 
 export const contactsReducer = slice.reducer;
 
-export const selectContacts = (state) => state.contacts.items;
+/* export const selectContacts = (state) => state.contacts.items;
 export const selectFilter = (state) => state.filters.name;
 
 export const selectLoading = (state) => state.contacts.loading;
@@ -81,4 +81,4 @@ export const selectFilteredContacts = createSelector(
     contacts.filter((contact) =>
       contact.name.trim().toLowerCase().includes(filter.trim().toLowerCase())
     )
-);
+); */
