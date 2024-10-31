@@ -1,12 +1,15 @@
-import ContactList from '../components/ContactList/ContactList'
-import SearchBox from '../components/SearchBox/SearchBox'
-
+import ContactForm from "../components/ContactForm/ContactForm";
+import ContactList from "../components/ContactList/ContactList";
+import SearchBox from "../components/SearchBox/SearchBox";
 
 const ContactsPage = () => {
   return (
-    <div><SearchBox/></div>,
-    <div><ContactList/></div>
-  )
-}
+    <>
+      <ContactForm />
+      <SearchBox />
+      <ContactList />
+    </>
+  );
+};
 
-export default ContactsPage
+export default ContactsPage;
