@@ -1,8 +1,8 @@
 import { Field, Form, Formik } from 'formik';
-import React from 'react'
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/auth/operations';
 import toast from 'react-hot-toast';
+import { motion } from "framer-motion";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -36,10 +36,16 @@ const LoginPage = () => {
 
 
   return (
-    <div className='hero bg-base-200 min-h-screen'>
-      <div className='hero-content flex-col lg:flex-row-reverse'>
+    <div className="hero bg-base-200 min-h-screen">
+      <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
+          <motion.h1
+            initial={{ x: 500, opacity: 0 }}
+            animate={{ x: 0, opacity: 1, transition: { duration: 0.4} }}
+            className="text-5xl font-bold"
+          >
+            Login now!
+          </motion.h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
@@ -79,7 +85,9 @@ const LoginPage = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary" type='submit'>Login</button>
+                <button className="btn btn-primary" type="submit">
+                  Login
+                </button>
               </div>
             </Form>
           </Formik>
