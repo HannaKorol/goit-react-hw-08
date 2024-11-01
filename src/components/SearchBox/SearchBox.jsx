@@ -10,7 +10,7 @@ export default function SearchBox() {
   return (
     <div className={s.searchWrapper}>
       <p className={s.lable}>Find contacts by name</p>
-      <input
+      <input className={s.inputSearch}
         type="text"
         value={nameFilter}
         onChange={
