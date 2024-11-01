@@ -16,8 +16,8 @@ const Header = () => {
 
   return (
     <div className={s.wrapper}>
-      <div>Auth</div>
-      {isLoggedIn && <div>Welcome, {user.name}</div>}
+      <div className={s.title}>Phonebook</div>
+      {isLoggedIn && <div className={s.welcomeText}>Welcome, {user.name}</div>}
       <div className={s.wrapperLinks}>
         <NavLink className={buildLinkClass} to="/">
           Home
@@ -38,7 +38,7 @@ const Header = () => {
         {isLoggedIn && (
           <button
             onClick={() => dispatch(logout())}
-            className="btn btn-secondary"
+            className="btn btn-active btn-primary"
           >
             Exit
           </button>

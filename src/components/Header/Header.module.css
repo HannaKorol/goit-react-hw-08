@@ -1,4 +1,25 @@
 .wrapper {
     display: flex ;
     justify-content: space-between;
+    background-color: rgb(129, 161, 243);
+padding: 20px;
+}
+
+.wrapperLinks{
+display: flex;   
+gap: 20px;
+justify-content: center;
+align-items: center;
+}
+
+.title {
+color: #fff;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #2d3bff, 0 0 30px #2d45ff, 0 0 40px #2d3bff, 0 0 50px #372dff, 0 0 75px #492dff;
+	letter-spacing: 5px;
+	font: 30px 'MisoRegular';
+}
+
+.welcomeText {
+    font-family: bradley hand, cursive;
+font-size: 30px;
 }
